@@ -1,0 +1,8 @@
+.headerWrapper{
+    display: flex;
+    border-bottom: 1px solid var(--grey);
+    padding: 24px 120px;
+    height: 68px;
+    background-color: var(--grey);
+    margin-bottom: 84px;
+}

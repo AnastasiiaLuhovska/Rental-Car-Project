@@ -1,15 +1,24 @@
-import { useSelector } from "react-redux";
-import { selectCars } from "../../redux/brands/selectors.ts";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCars } from "../../redux/cars/selectors.ts";
 import CarItem from "../CarItem/CarItem.tsx";
-
+import s from "./Catalog.module.css";
+import type { AppDispatch } from "../../redux/store.ts";
+import { useEffect } from "react";
+import { getCars } from "../../redux/cars/operations.ts";
 const Catalog = () => {
-  const allCars = useSelector(selectCars);
+  const dispatch = useDispatch<AppDispatch>();
 
-  if (allCars === null) return;
+  useEffect(() => {
+    dispatch(getCars());
+  }, []);
+
+  const allCars = useSelector(selectCars);
+  console.log(allCars);
+  if (!allCars.length) return;
 
   return (
-    <ul>
-      {allCars.cars.map((car) => {
+    <ul className={s.list}>
+      {allCars.map((car) => {
         return <CarItem key={car.id} car={car} />;
       })}
     </ul>

@@ -1,0 +1,55 @@
+import { createSlice } from "@reduxjs/toolkit";
+import { getCars } from "./operations.ts";
+import type { QueryValues, Car } from "../../types/types.ts";
+
+interface Initial {
+  error: null | string | undefined;
+  cars: Car[] | [];
+  isLoading: boolean;
+  query: QueryValues;
+  page: number;
+}
+
+const initialState: Initial = {
+  error: null,
+  cars: [],
+  isLoading: false,
+  query: {
+    brandOption: "",
+    maxMileage: "",
+    minMileage: "",
+    priceOption: "",
+  },
+  page: 1,
+};
+const slice = createSlice({
+  name: "cars",
+  initialState,
+  reducers: {
+    setPage: (state, action) => {
+      state.page += action.payload;
+    },
+    setQuery: (state, action) => {
+      state.query = action.payload;
+      state.cars = [];
+      state.page = 1;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getCars.fulfilled, (state, action) => {
+        state.cars = [...state.cars, ...action.payload.cars];
+        state.error = null;
+        state.isLoading = false;
+      })
+      .addCase(getCars.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCars.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+  },
+});
+export const carsReducer = slice.reducer;
+export const { setPage, setQuery } = slice.actions;

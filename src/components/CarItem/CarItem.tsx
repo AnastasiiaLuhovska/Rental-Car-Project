@@ -1,5 +1,7 @@
 import type { Car } from "../../types/types.ts";
 import type { FC } from "react";
+import s from "./CarItem.module.css";
+import { Link } from "react-router";
 
 interface CarItemProps {
   car: Car;
@@ -18,15 +20,25 @@ const CarItem: FC<CarItemProps> = ({ car }) => {
     mileage,
   } = car;
   return (
-    <li>
-      <img src={img} alt={id} />
-      <p>
-        {brand} <span>{model}</span>, {year}
-      </p>
-      <p>${rentalPrice}</p>
-      <p>
-        {address}| {rentalCompany}| {type}| {mileage}
-      </p>
+    <li className={s.item}>
+      <div className={s.wrapper}>
+        <img className={s.img} src={img} alt={id} />
+        <div className={s.parWrap}>
+          <div className={s.par}>
+            <p>
+              {brand} <span className={s.span}>{model}</span>, {year}
+            </p>
+          </div>
+          <p>${rentalPrice}</p>
+        </div>
+
+        <p className={s.description}>
+          {address} | {rentalCompany} | {type} | {mileage} km
+        </p>
+      </div>
+      <Link to={`/catalog/${id}`} className={s.button}>
+        Read more
+      </Link>
     </li>
   );
 };

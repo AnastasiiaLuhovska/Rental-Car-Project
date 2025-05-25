@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../../redux/store.ts";
 import { selectBrands } from "../../redux/brands/selectors.ts";
 import type { QueryValues } from "../../types/types.ts";
-import { getBrands, getCars } from "../../redux/brands/operations.ts";
+import { getBrands } from "../../redux/brands/operations.ts";
 import { useEffect } from "react";
+import s from "./FilterBar.module.css";
+import { getCars } from "../../redux/cars/operations.ts";
+import { setQuery } from "../../redux/cars/slice.ts";
 
 const FilterBar: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,7 +25,8 @@ const FilterBar: FC = () => {
     values: QueryValues,
     actions: FormikHelpers<QueryValues>,
   ) => {
-    dispatch(getCars(values));
+    dispatch(setQuery(values));
+    dispatch(getCars());
     actions.resetForm();
   };
 
@@ -39,10 +43,10 @@ const FilterBar: FC = () => {
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form>
-          <label>
+        <Form className={s.wrapper}>
+          <label className={s.label}>
             Car brand
-            <Field as="select" name="brandOption">
+            <Field className={s.field} as="select" name="brandOption">
               <option value="">Choose a brand</option>
               {brands.map((brand, idx) => (
                 <option key={idx} value={brand}>
@@ -52,9 +56,9 @@ const FilterBar: FC = () => {
             </Field>
           </label>
 
-          <label>
+          <label className={s.label}>
             Price/ 1 hour
-            <Field as="select" name="priceOption">
+            <Field as="select" className={s.field} name="priceOption">
               <option value="">Choose a price</option>
               {pricesArr.map((price, idx) => (
                 <option key={idx} value={price}>
@@ -64,13 +68,27 @@ const FilterBar: FC = () => {
             </Field>
           </label>
 
-          <label>
+          <label className={s.label}>
             Сar mileage / km
-            <Field type="number" name="minMileage" placeholder="From"></Field>
-            <Field type="number" name="maxMileage" placeholder="To"></Field>
+            <div className={s.fieldWrapper}>
+              <Field
+                className={s.fieldMin}
+                type="number"
+                name="minMileage"
+                placeholder="From"
+              ></Field>
+              <Field
+                className={s.fieldMax}
+                type="number"
+                name="maxMileage"
+                placeholder="To"
+              ></Field>
+            </div>
           </label>
 
-          <button type="submit">Search</button>
+          <button className={s.button} type="submit">
+            Search
+          </button>
         </Form>
       </Formik>
     </>

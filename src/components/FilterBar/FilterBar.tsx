@@ -26,7 +26,7 @@ const FilterBar: FC = () => {
     actions: FormikHelpers<QueryValues>,
   ) => {
     dispatch(setQuery(values));
-    dispatch(getCars());
+    dispatch(getCars(values));
     actions.resetForm();
   };
 

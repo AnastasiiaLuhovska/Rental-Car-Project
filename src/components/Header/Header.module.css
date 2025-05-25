@@ -1,8 +1,19 @@
 .headerWrapper{
     display: flex;
-    border-bottom: 1px solid var(--grey);
+    border-bottom: 1px solid  var(--second-white);
     padding: 24px 120px;
     height: 68px;
-    background-color: var(--grey);
+    background-color: var(--second-white);
     margin-bottom: 84px;
+    justify-content: space-between;
+}
+
+.navWrapper{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    display: flex;
+    gap: 32px;
+    color: var(--black);
 }

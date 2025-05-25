@@ -9,6 +9,7 @@ interface Initial {
   query: QueryValues;
   page: number;
   carById: null | Car;
+  totalPages: number;
 }
 
 const initialState: Initial = {
@@ -23,6 +24,7 @@ const initialState: Initial = {
   },
   page: 1,
   carById: null,
+  totalPages: 1,
 };
 const slice = createSlice({
   name: "cars",
@@ -41,6 +43,7 @@ const slice = createSlice({
     builder
       .addCase(getCars.fulfilled, (state, action) => {
         state.cars = [...state.cars, ...action.payload.cars];
+        state.totalPages = action.payload.totalPages;
         state.error = null;
         state.isLoading = false;
       })

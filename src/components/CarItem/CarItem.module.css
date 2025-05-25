@@ -2,8 +2,20 @@
     max-width: 276px;
     height: 424px;
     overflow: hidden;
+    position: relative;
 }
+.svg{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    fill: var(--white);
+    stroke: var(--white);
 
+    &&:hover, :focus{
+        fill: var(--blue);
+        stroke: var(--blue);
+}
+}
 .img{
     object-fit: cover;
     border-radius: 14px;

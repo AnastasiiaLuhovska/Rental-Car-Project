@@ -1,16 +1,15 @@
 import { AxiosError } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { Car, Return } from "../../types/types.ts";
+import type { Car, QueryValues, Return } from "../../types/types.ts";
 import type { RootState } from "../store.ts";
 import instance from "../../api/api.ts";
 
 export const getCars = createAsyncThunk<
   Return,
-  undefined,
+  QueryValues | undefined,
   { rejectValue: string; state: RootState }
->("cars/getCars", async (_, thunkAPI) => {
+>("cars/getCars", async (values, thunkAPI) => {
   try {
-    const values = thunkAPI.getState().cars.query;
     const { data } = await instance.get("/cars", {
       params: {
         ...(values !== undefined && {

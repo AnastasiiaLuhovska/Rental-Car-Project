@@ -6,10 +6,14 @@ const Header: FC = () => {
   return (
     <div className={s.headerWrapper}>
       <Link to="/" className={s.logo}>
-        Rental<span className={s.span}>Car</span>
+        <svg width="100" height="16">
+          <use href="/symbol-defs.svg#icon-RentalCar" />
+        </svg>
       </Link>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/catalog">Catalog</NavLink>
+      <div className={s.navWrapper}>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/catalog">Catalog</NavLink>
+      </div>
     </div>
   );
 };

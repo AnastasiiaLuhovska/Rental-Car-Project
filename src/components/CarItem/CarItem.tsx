@@ -2,6 +2,8 @@ import type { Car } from "../../types/types.ts";
 import type { FC } from "react";
 import s from "./CarItem.module.css";
 import { Link } from "react-router";
+import { FaRegHeart } from "react-icons/fa";
+// import { FaHeart } from "react-icons/fa";
 
 interface CarItemProps {
   car: Car;
@@ -23,6 +25,7 @@ const CarItem: FC<CarItemProps> = ({ car }) => {
     <li className={s.item}>
       <div className={s.wrapper}>
         <img className={s.img} src={img} alt={id} />
+        <FaRegHeart className={s.svg} />
         <div className={s.parWrap}>
           <div className={s.par}>
             <p>

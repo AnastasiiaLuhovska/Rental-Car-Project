@@ -5,7 +5,8 @@
     font-size: 12px;
     line-height: 133%;
     color: var(--grey);
-    gap: 16px
+    gap: 16px;
+    align-items: end;
 }
 
 .button{

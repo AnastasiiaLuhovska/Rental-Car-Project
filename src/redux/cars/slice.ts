@@ -10,6 +10,7 @@ interface Initial {
   page: number;
   carById: null | Car;
   totalPages: number;
+  like: string[] | [];
 }
 
 const initialState: Initial = {
@@ -25,6 +26,7 @@ const initialState: Initial = {
   page: 1,
   carById: null,
   totalPages: 1,
+  like: [],
 };
 const slice = createSlice({
   name: "cars",
@@ -37,6 +39,9 @@ const slice = createSlice({
       state.query = action.payload;
       state.cars = [];
       state.page = 1;
+    },
+    addLike: (state, action) => {
+      state.like.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -69,4 +74,4 @@ const slice = createSlice({
   },
 });
 export const carsReducer = slice.reducer;
-export const { setPage, setQuery } = slice.actions;
+export const { setPage, setQuery, addLike } = slice.actions;

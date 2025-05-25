@@ -21,13 +21,9 @@ const FilterBar: FC = () => {
     minMileage: "",
   };
 
-  const handleSubmit = (
-    values: QueryValues,
-    actions: FormikHelpers<QueryValues>,
-  ) => {
+  const handleSubmit = (values: QueryValues) => {
     dispatch(setQuery(values));
     dispatch(getCars(values));
-    actions.resetForm();
   };
 
   useEffect(() => {

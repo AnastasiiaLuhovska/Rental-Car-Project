@@ -1,5 +1,5 @@
 import { type FC } from "react";
-import { Field, Form, Formik, type FormikHelpers } from "formik";
+import { Field, Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../../redux/store.ts";
 import { selectBrands } from "../../redux/brands/selectors.ts";

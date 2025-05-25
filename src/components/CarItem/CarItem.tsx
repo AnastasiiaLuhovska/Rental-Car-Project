@@ -5,14 +5,14 @@ import { Link } from "react-router";
 import { FaRegHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addLike } from "../../redux/cars/slice.ts";
-
-// import { FaHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 interface CarItemProps {
   car: Car;
+  like?: boolean;
 }
 
-const CarItem: FC<CarItemProps> = ({ car }) => {
+const CarItem: FC<CarItemProps> = ({ car, like }) => {
   const dispatch = useDispatch();
   const {
     id,
@@ -35,7 +35,11 @@ const CarItem: FC<CarItemProps> = ({ car }) => {
       <div className={s.wrapper}>
         <img className={s.img} src={img} alt={id} />
         <button onClick={handleClick}>
-          <FaRegHeart className={s.svg} />
+          {like ? (
+            <FaHeart className={s.svgLike} />
+          ) : (
+            <FaRegHeart className={s.svg} />
+          )}
         </button>
         <div className={s.parWrap}>
           <div className={s.par}>

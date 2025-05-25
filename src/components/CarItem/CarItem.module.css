@@ -16,12 +16,23 @@
         stroke: var(--blue);
 }
 }
+.svgLike{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    fill: var(--blue);
+
+    &&:hover, :focus{
+        fill: var(--white);
+        stroke: var(--white);
+    }
+}
 .img{
     object-fit: cover;
     border-radius: 14px;
     width: 276px;
     height: 268px;
-    margin-bottom: 16px;
+    /*margin-bottom: 16px;*/
 }
 
 .wrapper{

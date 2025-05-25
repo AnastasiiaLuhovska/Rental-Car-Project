@@ -41,7 +41,8 @@ const slice = createSlice({
       state.page = 1;
     },
     addLike: (state, action) => {
-      state.like.push(action.payload);
+      state.like = [...state.like, action.payload];
+      console.log(state.like);
     },
   },
   extraReducers: (builder) => {

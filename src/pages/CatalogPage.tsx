@@ -16,6 +16,7 @@ const CatalogPage: FC = () => {
   const allCars = useSelector(selectCars);
   const totalPages = useSelector(selectTotalPages);
   const page = useSelector(selectPage);
+
   return (
     <div className={s.wrapper}>
       <FilterBar />

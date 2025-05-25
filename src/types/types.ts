@@ -34,6 +34,6 @@ export interface Return {
 export interface BookingFormValues {
   name: string;
   email: string;
-  bookingDate: string;
+  date: string;
   comment: string;
 }

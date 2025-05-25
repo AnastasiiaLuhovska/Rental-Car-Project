@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCars } from "./operations.ts";
+import { getCarById, getCars } from "./operations.ts";
 import type { QueryValues, Car } from "../../types/types.ts";
 
 interface Initial {
@@ -8,6 +8,7 @@ interface Initial {
   isLoading: boolean;
   query: QueryValues;
   page: number;
+  carById: null | Car;
 }
 
 const initialState: Initial = {
@@ -21,6 +22,7 @@ const initialState: Initial = {
     priceOption: "",
   },
   page: 1,
+  carById: null,
 };
 const slice = createSlice({
   name: "cars",
@@ -46,6 +48,18 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(getCars.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getCarById.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.carById = action.payload;
+      })
+      .addCase(getCarById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCarById.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });

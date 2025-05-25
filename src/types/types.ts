@@ -9,6 +9,12 @@ export interface Car {
   rentalCompany: string;
   address: string;
   mileage: number;
+  rentalConditions: string[];
+  description: string;
+  accessories: string[];
+  engineSize: string;
+  fuelConsumption: string;
+  functionalities: string[];
 }
 
 export interface QueryValues {
@@ -23,4 +29,11 @@ export interface Return {
   page: string;
   totalCars: number;
   totalPages: number;
+}
+
+export interface BookingFormValues {
+  name: string;
+  email: string;
+  bookingDate: string;
+  comment: string;
 }

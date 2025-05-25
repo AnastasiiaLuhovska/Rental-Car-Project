@@ -13,7 +13,7 @@ const Catalog = () => {
   }, []);
 
   const allCars = useSelector(selectCars);
-  console.log(allCars);
+
   if (!allCars.length) return;
 
   return (

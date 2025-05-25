@@ -1,0 +1,74 @@
+.mainWrapper{
+    display: flex;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    gap: 72px;
+}
+.img{
+    border-radius: 19px;
+    width: 640px;
+    height: 512px;
+    margin-bottom: 40px;
+}
+
+.wrapper{
+    color: var(--black);
+}
+
+.carName{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    margin-bottom: 8px;
+}
+
+.carId{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--grey);
+}
+
+.carLocation{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    margin-bottom: 16px;
+
+}
+
+.price{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--blue);
+    margin-bottom: 32px;
+}
+
+.desc{font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    margin-bottom: 68px;
+
+}
+
+.title{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+.li{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 110px;
+}

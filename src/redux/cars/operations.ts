@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { Return } from "../../types/types.ts";
+import type { Car, Return } from "../../types/types.ts";
 import type { RootState } from "../store.ts";
 import instance from "../../api/api.ts";
 
@@ -29,5 +29,21 @@ export const getCars = createAsyncThunk<
       return thunkAPI.rejectWithValue(error.message);
     }
     return thunkAPI.rejectWithValue("Something wnt wrong");
+  }
+});
+
+export const getCarById = createAsyncThunk<
+  Car,
+  string,
+  { rejectValue: string }
+>("carById", async (id, thunkAPi) => {
+  try {
+    const { data } = await instance.get(`/cars/${id}`);
+    return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return thunkAPi.rejectWithValue(error.message);
+    }
+    return thunkAPi.rejectWithValue("Something went wrong");
   }
 });

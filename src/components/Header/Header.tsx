@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router";
 import type { FC } from "react";
 import s from "./Header.module.css";
+import clsx from "clsx";
 
 const Header: FC = () => {
   return (
@@ -13,8 +14,18 @@ const Header: FC = () => {
             </svg>
           </Link>
           <div className={s.navWrapper}>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/catalog">Catalog</NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? s.color : "")}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/catalog"
+              className={({ isActive }) => (isActive ? s.color : "")}
+            >
+              Catalog
+            </NavLink>
           </div>
         </div>
       </div>

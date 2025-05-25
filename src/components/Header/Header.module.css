@@ -16,6 +16,9 @@
     gap: 32px;
     color: var(--black);
 }
+.color{
+    color: var(--blue)
+}
 
 .secWrapper{
     display: flex;

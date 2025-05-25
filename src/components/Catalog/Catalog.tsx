@@ -23,7 +23,7 @@ const Catalog = () => {
   return (
     <ul className={s.list}>
       {allCars.map((car: Car) => {
-        return like.includes(car.id) ? (
+        return like && like.includes(car.id) ? (
           <CarItem key={car.id} car={car} like />
         ) : (
           <CarItem key={car.id} car={car} />

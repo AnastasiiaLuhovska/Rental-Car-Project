@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router";
 import type { FC } from "react";
 import s from "./Header.module.css";
-import clsx from "clsx";
 
 const Header: FC = () => {
   return (

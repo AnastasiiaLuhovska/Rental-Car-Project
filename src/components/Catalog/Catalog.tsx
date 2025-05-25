@@ -17,7 +17,8 @@ const Catalog = () => {
   const allCars = useSelector(selectCars);
   const like = useSelector(selectLike);
 
-  if (!allCars.length) return;
+  if (!allCars.length)
+    return <div className={s.notFound}>We didnt find anything...</div>;
 
   return (
     <ul className={s.list}>

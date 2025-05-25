@@ -4,4 +4,5 @@
     gap: 32px;
     max-width: 1200px;
     margin-bottom: 80px;
+    justify-content: center;
 }

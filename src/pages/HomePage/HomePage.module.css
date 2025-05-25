@@ -1,0 +1,57 @@
+.wrapper{
+    background-image: url('../../assets/img/hero@3x.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 700px;
+    width: 100%;
+    display: flex;
+}
+
+.header{
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 120%;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.p{
+
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 40px;
+}
+
+.button{
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 276px;
+    height: 44px;
+    background-color: var(--blue);
+    &&:hover, :focus{
+        background-color: var(--dark-blue);
+    }
+}
+
+.textWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+
+.firstWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    padding: 60px 0
+}

@@ -18,13 +18,15 @@ const CatalogPage: FC = () => {
   const page = useSelector(selectPage);
 
   return (
-    <div className={s.wrapper}>
-      <FilterBar />
-      <Catalog />
-      {!isLoading &&
-        allCars.length > 0 &&
-        totalPages > 1 &&
-        page < totalPages && <LoadMoreButton />}
+    <div className="container">
+      <div className={s.wrapper}>
+        <FilterBar />
+        <Catalog />
+        {!isLoading &&
+          allCars.length > 0 &&
+          totalPages > 1 &&
+          page < totalPages && <LoadMoreButton />}
+      </div>
     </div>
   );
 };

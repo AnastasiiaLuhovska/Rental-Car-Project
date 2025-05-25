@@ -1,9 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCars,
-  selectLike,
-  selectQuery,
-} from "../../redux/cars/selectors.ts";
+import { selectCars, selectLike } from "../../redux/cars/selectors.ts";
 import CarItem from "../CarItem/CarItem.tsx";
 import s from "./Catalog.module.css";
 import type { AppDispatch } from "../../redux/store.ts";
@@ -13,10 +9,9 @@ import type { Car } from "../../types/types.ts";
 
 const Catalog = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const query = useSelector(selectQuery);
 
   useEffect(() => {
-    dispatch(getCars(query));
+    dispatch(getCars());
   }, []);
 
   const allCars = useSelector(selectCars);

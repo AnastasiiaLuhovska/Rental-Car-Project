@@ -17,7 +17,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ["query", "like"],
+  whitelist: ["like"],
 };
 const persistedReducer = persistReducer(persistConfig, carsReducer);
 

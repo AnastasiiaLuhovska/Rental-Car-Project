@@ -21,7 +21,11 @@ const DescriptionPage: FC = () => {
 
   if (carById === null) return;
 
-  return <DescriptionItem car={carById} />;
+  return (
+    <div className="container">
+      <DescriptionItem car={carById} />
+    </div>
+  );
 };
 
 export default DescriptionPage;

@@ -1,10 +1,10 @@
 import type { Car } from "../../types/types.ts";
-import type { FC } from "react";
+import { type FC, useState } from "react";
 import s from "./CarItem.module.css";
 import { Link } from "react-router";
 import { FaRegHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addLike } from "../../redux/cars/slice.ts";
+import { addLike, deleteLike } from "../../redux/cars/slice.ts";
 import { FaHeart } from "react-icons/fa";
 
 interface CarItemProps {
@@ -13,6 +13,7 @@ interface CarItemProps {
 }
 
 const CarItem: FC<CarItemProps> = ({ car, like }) => {
+  const [isLiked, addIsLiked] = useState<boolean>(false);
   const dispatch = useDispatch();
   const {
     id,
@@ -28,7 +29,8 @@ const CarItem: FC<CarItemProps> = ({ car, like }) => {
   } = car;
 
   const handleClick = () => {
-    dispatch(addLike(car.id));
+    addIsLiked(!isLiked);
+    isLiked ? dispatch(addLike(car.id)) : dispatch(deleteLike(car.id));
   };
   return (
     <li className={s.item}>

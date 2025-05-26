@@ -9,11 +9,12 @@ import { useEffect } from "react";
 import s from "./FilterBar.module.css";
 import { getCars } from "../../redux/cars/operations.ts";
 import { setQuery } from "../../redux/cars/slice.ts";
+// import { useSearchParams } from "react-router";
 
 const FilterBar: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const brands = useSelector(selectBrands);
-
+  // const [searchParams, setSearchParams] = useSearchParams();
   const initialValues: QueryValues = {
     brandOption: "",
     priceOption: "",
@@ -24,6 +25,7 @@ const FilterBar: FC = () => {
   const handleSubmit = (values: QueryValues) => {
     dispatch(setQuery(values));
     dispatch(getCars(values));
+    // setSearchParams(JSON.stringify(values));
   };
 
   useEffect(() => {

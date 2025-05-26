@@ -4,13 +4,13 @@ import type { QueryValues, Car } from "../../types/types.ts";
 
 interface Initial {
   error: null | string | undefined;
-  cars: Car[] | [];
+  cars: Car[];
   isLoading: boolean;
   query: QueryValues;
   page: number;
   carById: null | Car;
   totalPages: number;
-  like: string[] | null;
+  like: string[];
 }
 
 const initialState: Initial = {
@@ -26,7 +26,7 @@ const initialState: Initial = {
   page: 1,
   carById: null,
   totalPages: 1,
-  like: null,
+  like: [],
 };
 const slice = createSlice({
   name: "cars",
@@ -41,10 +41,10 @@ const slice = createSlice({
       state.page = 1;
     },
     addLike: (state, action) => {
-      if (!state.like) {
-        return action.payload;
-      }
-      return [...state.like, action.payload];
+      state.like = [...state.like, action.payload];
+    },
+    deleteLike: (state, action) => {
+      state.like = state.like.filter((like) => like !== action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -77,4 +77,4 @@ const slice = createSlice({
   },
 });
 export const carsReducer = slice.reducer;
-export const { setPage, setQuery, addLike } = slice.actions;
+export const { setPage, setQuery, addLike, deleteLike } = slice.actions;

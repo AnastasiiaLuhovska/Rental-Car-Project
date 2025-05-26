@@ -23,7 +23,7 @@ const CatalogPage: FC = () => {
         <FilterBar />
         <Catalog />
         {!isLoading &&
-          allCars.length > 0 &&
+          allCars?.length > 0 &&
           totalPages > 1 &&
           page < totalPages && <LoadMoreButton />}
       </div>

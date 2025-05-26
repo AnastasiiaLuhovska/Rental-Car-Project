@@ -7,8 +7,11 @@ import { useEffect } from "react";
 import { getCars } from "../../redux/cars/operations.ts";
 import type { Car } from "../../types/types.ts";
 
+// import { useLocation } from "react-router";
+
 const Catalog = () => {
   const dispatch = useDispatch<AppDispatch>();
+  // const location = useLocation();
 
   useEffect(() => {
     dispatch(getCars());
@@ -17,7 +20,7 @@ const Catalog = () => {
   const allCars = useSelector(selectCars);
   const like = useSelector(selectLike);
 
-  if (!allCars.length)
+  if (!allCars?.length)
     return <div className={s.notFound}>We didnt find anything...</div>;
 
   return (

@@ -22,6 +22,7 @@ export interface QueryValues {
   maxMileage: string;
   minMileage: string;
   priceOption: string;
+  [key: string]: string;
 }
 
 export interface Return {
@@ -36,4 +37,8 @@ export interface BookingFormValues {
   email: string;
   date: string;
   comment: string;
+}
+
+export interface DescriptionProps {
+  state: {};
 }

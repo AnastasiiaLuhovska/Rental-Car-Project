@@ -1,11 +1,12 @@
 import type { Car } from "../../types/types.ts";
 import { type FC, useState } from "react";
 import s from "./CarItem.module.css";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { FaRegHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addLike, deleteLike } from "../../redux/cars/slice.ts";
 import { FaHeart } from "react-icons/fa";
+import type { Location } from "react-router-dom";
 
 interface CarItemProps {
   car: Car;
@@ -15,6 +16,7 @@ interface CarItemProps {
 const CarItem: FC<CarItemProps> = ({ car, like }) => {
   const [isLiked, addIsLiked] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const location: Location = useLocation();
   const {
     id,
     year,
@@ -32,6 +34,7 @@ const CarItem: FC<CarItemProps> = ({ car, like }) => {
     addIsLiked(!isLiked);
     isLiked ? dispatch(addLike(car.id)) : dispatch(deleteLike(car.id));
   };
+
   return (
     <li className={s.item}>
       <div className={s.wrapper}>
@@ -56,7 +59,7 @@ const CarItem: FC<CarItemProps> = ({ car, like }) => {
           {address} | {rentalCompany} | {type} | {mileage} km
         </p>
       </div>
-      <Link to={`/catalog/${id}`} className={s.button}>
+      <Link to={`/catalog/${id}`} className={s.button} state={location}>
         Read more
       </Link>
     </li>

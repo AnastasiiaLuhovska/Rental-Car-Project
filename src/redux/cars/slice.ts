@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getCarById, getCars } from "./operations.ts";
-import type { QueryValues, Car } from "../../types/types.ts";
+import type { Car } from "../../types/types.ts";
 
 interface Initial {
   error: null | string | undefined;
   cars: Car[];
   isLoading: boolean;
-  query: QueryValues;
   page: number;
   carById: null | Car;
   totalPages: number;
@@ -17,12 +16,6 @@ const initialState: Initial = {
   error: null,
   cars: [],
   isLoading: false,
-  query: {
-    brandOption: "",
-    maxMileage: "",
-    minMileage: "",
-    priceOption: "",
-  },
   page: 1,
   carById: null,
   totalPages: 1,
@@ -35,11 +28,6 @@ const slice = createSlice({
     setPage: (state, action) => {
       state.page += action.payload;
     },
-    setQuery: (state, action) => {
-      state.query = action.payload;
-      state.cars = [];
-      state.page = 1;
-    },
     addLike: (state, action) => {
       state.like = [...state.like, action.payload];
     },
@@ -50,7 +38,9 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCars.fulfilled, (state, action) => {
-        state.cars = [...state.cars, ...action.payload.cars];
+        state.page > 1
+          ? (state.cars = [...state.cars, ...action.payload.cars])
+          : (state.cars = [...action.payload.cars]);
         state.totalPages = action.payload.totalPages;
         state.error = null;
         state.isLoading = false;
@@ -77,4 +67,4 @@ const slice = createSlice({
   },
 });
 export const carsReducer = slice.reducer;
-export const { setPage, setQuery, addLike, deleteLike } = slice.actions;
+export const { setPage, addLike, deleteLike } = slice.actions;

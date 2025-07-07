@@ -3,19 +3,20 @@ import { selectCars, selectLike } from "../../redux/cars/selectors.ts";
 import CarItem from "../CarItem/CarItem.tsx";
 import s from "./Catalog.module.css";
 import type { AppDispatch } from "../../redux/store.ts";
-import { useEffect } from "react";
+import { type FC, useEffect } from "react";
 import { getCars } from "../../redux/cars/operations.ts";
 import type { Car } from "../../types/types.ts";
+import { useLocation } from "react-router";
+import { getParams } from "../../utils/searchParams.tsx";
 
-// import { useLocation } from "react-router";
-
-const Catalog = () => {
+const Catalog: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  // const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
-    dispatch(getCars());
-  }, []);
+    const queryValues = getParams(location);
+    dispatch(getCars(queryValues));
+  }, [location.search]);
 
   const allCars = useSelector(selectCars);
   const like = useSelector(selectLike);

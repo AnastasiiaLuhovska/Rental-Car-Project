@@ -1,0 +1,18 @@
+.buttonGoBack{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    height: 44px;
+    width: 150px;
+    background-color: #3470FF;
+    &&:hover, :focus{
+        background-color: var(--dark-blue);
+    }
+    margin-top: 70px
+}

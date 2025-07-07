@@ -38,7 +38,3 @@ export interface BookingFormValues {
   date: string;
   comment: string;
 }
-
-export interface DescriptionProps {
-  state: {};
-}

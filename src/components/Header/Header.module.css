@@ -1,12 +1,18 @@
 .headerWrapper{
-
     border-bottom: 1px solid  var(--second-white);
-    padding: 24px 120px;
+    padding: 24px 10px;
     height: 68px;
     background-color: var(--second-white);
 
 }
 
+@media screen and (min-width: 768px){
+.headerWrapper{
+    padding: 24px 120px;
+
+}
+
+}
 .navWrapper{
     font-weight: 500;
     font-size: 16px;

@@ -1,18 +1,32 @@
 .mainWrapper{
     display: flex;
+    flex-direction: column;
     font-weight: 500;
     font-size: 16px;
     line-height: 125%;
     gap: 72px;
-    margin-top: 84px;
+    margin-top: 24px;
+}
+
+@media screen and (min-width: 1440px){
+    .mainWrapper{
+        flex-direction: row;
+    }
 }
 .img{
     border-radius: 19px;
-    width: 640px;
-    height: 512px;
-    margin-bottom: 40px;
+    width: 400px;
+
+
 }
 
+@media screen and (min-width: 768px){
+    .img{
+        width: 640px;
+        height: 512px;
+        margin-bottom: 40px;
+    }
+}
 .wrapper{
     color: var(--black);
 }
@@ -80,5 +94,23 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-bottom: 110px;
+    margin-bottom: 30px;
+}
+
+@media screen and (min-width: 1440px){
+    .list{
+        margin-bottom: 110px;
+
+    }
+}
+
+.car-image-wrapper{
+    display: flex;
+}
+
+@media screen and (min-width: 1440px){
+    .car-image-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
 }
